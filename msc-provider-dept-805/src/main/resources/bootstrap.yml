@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: dept-server
+  cloud:    config:      label: master         #指明远程仓库的分支
+      profile: dev          #dev开发环境配置    test测试环境  pro正式环境
+      uri: http://jun:301   #指明配置服务中心的地址
+      #discovery:            #从服务注册中心获取服务        #enabled: true
+        #service-id: config-server 

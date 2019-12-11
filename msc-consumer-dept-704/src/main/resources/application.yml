@@ -1,0 +1,14 @@
+server:
+  port: 704
+  
+eureka:  client:    register-with-eureka: false #服务消费者，不注册进Eureka
+    service-url:      defaultZone: http://eureka01.com:901/eureka, http://eureka02.com:902/eureka/, http://eureka03.com:903/eureka/
+     
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+  hystrix:
+    enabled: true

@@ -1,0 +1,35 @@
+server:
+  port: 803
+  
+mybatis:
+  config-location: classpath:mybatis/mybatis-cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.jun.entity    # 所有Entity别名类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+spring:
+   application:
+    name: dept-server #服务消费者可通过此名称从Eureka中获取服务
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    url: jdbc:mysql://120.76.100.159:3306/msc_3?useUnicode=true&characterEncoding=UTF-8 # 数据库名称
+    username: root
+    password: NMode@2019 
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+      
+eureka:  client: #客户端注册进eureka服务列表内    service-url:      defaultZone: http://eureka01.com:901/eureka, http://eureka02.com:902/eureka/, http://eureka03.com:903/eureka/  instance:    instance-id: dept-803 #修改服务暴露名称    prefer-ip-address: true #设置访问信息有IP信息提示
+    
+info:
+  app.name: dept-service-803
+  company.name: Jun
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+  
+# 使用Hystrix Metrics Stream必备 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

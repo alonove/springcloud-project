@@ -1,0 +1,25 @@
+server:
+  port: 301
+  
+spring:
+  application:    name: config-server  cloud:    config:      server:        default-label: master        git:
+          #配置git仓库地址          uri: https://github.com/alonove/config-center
+          #git地址查看目录，可配多个
+          search-paths: config-center
+          #如果Git仓库为公开仓库，可以不填写用户名和密码，如果是私有仓库需要填写
+          #username: 
+          #password: 
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka01.com:901/eureka, http://eureka02.com:902/eureka/, http://eureka03.com:903/eureka/
+  instance:
+    instance-id: ${spring.application.name:${random.value}}:${server.port} #在注册中心展示名称+ip+随机数
+    prefer-ip-address: true #设置访问信息有IP信息提示
+    
+info:
+  app.name: config-service-301
+  company.name: Jun
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

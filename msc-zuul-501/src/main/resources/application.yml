@@ -1,0 +1,19 @@
+server:
+  port: 501
+  
+spring:  application:    name: msc-zuul-service
+    
+eureka:  client:    service-url:      defaultZone: http://eureka01.com:901/eureka, http://eureka02.com:902/eureka/, http://eureka03.com:903/eureka/
+  instance:    instance-id: zuul-501
+    prefer-ip-address: true
+    
+info:
+  app.name: zuul-service-501
+  company.name: Jun
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+  
+zuul:
+  prefix: /jun
+  ignored-services: "*"  routes:    zs.serviceId: msc-dept-service
+    zs.path: /zu/**

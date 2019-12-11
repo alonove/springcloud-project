@@ -1,0 +1,25 @@
+server:
+  port: 8991
+  
+spring:  application:    name: turbine-server
+    
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka01.com:901/eureka, http://eureka02.com:902/eureka/, http://eureka03.com:903/eureka/
+  instance:
+    instance-id: ${spring.application.name}-${server.port} #修改服务暴露名称
+    prefer-ip-address: true #设置访问信息有IP信息提示
+    
+turbine:
+  #监控的应用名称，多个以逗号隔开  app-config: MSC-DEPT-SERVICE, DEPT-SERVER
+  aggregator:
+    #指定聚合哪些集群，默认为 default    cluster-config: default
+  #指定集合名称为 default
+  cluster-name-expression: new String("default")
+  
+info:
+  app.name: turbine-service-804
+  company.name: Jun
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jun.dao.DeptDao">
+
+	<select id="get" resultType="Dept">
+		SELECT id, name, source FROM t_dept WHERE id = #{id}
+	</select>
+
+	<select id="findList" resultType="Dept">
+		SELECT id, name, source FROM t_dept
+	</select>
+</mapper>
+
+

@@ -1,0 +1,5 @@
+server:
+  port: 702
+  
+eureka:  client:    register-with-eureka: false #服务消费者，不注册进Eureka
+    service-url:      defaultZone: http://eureka01.com:901/eureka, http://eureka02.com:902/eureka/, http://eureka03.com:903/eureka/
